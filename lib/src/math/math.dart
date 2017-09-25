@@ -9,6 +9,8 @@ part 'erf.dart';
 part 'exp.dart';
 part 'gamma.dart';
 part 'lgamma.dart';
+part 'normal.dart';
+part 'polynomial.dart';
 
 class Double {
   /// Converts double precision to single precision approximately

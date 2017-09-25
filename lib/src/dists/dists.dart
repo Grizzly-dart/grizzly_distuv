@@ -9,6 +9,7 @@ part 'cauchy.dart';
 part 'chisquared.dart';
 part 'exponential.dart';
 part 'gamma.dart';
+part 'geometric.dart';
 part 'normal.dart';
 part 'uniform.dart';
 
