@@ -4,6 +4,6 @@
 import 'package:grizzly_stats/grizzly_stats.dart';
 
 main() {
-	final beta = new Beta(2.31, 0.627);
-	print(beta.ppf(0.0));
+  final beta = new Beta(2.31, 0.627);
+  print(beta.ppf(0.0));
 }

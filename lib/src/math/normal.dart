@@ -109,7 +109,7 @@ double normalInv(double y0) {
     code = 0;
   }
 
-	double x = 0.0;
+  double x = 0.0;
 
   if (y > 0.13533528323661269189) {
     y = y - 0.5;
@@ -121,7 +121,7 @@ double normalInv(double y0) {
 
   x = math.sqrt(-2.0 * math.log(y));
   final double x0 = x - math.log(x) / x;
-	double x1 = 0.0;
+  double x1 = 0.0;
   final double z = 1.0 / x;
   if (x < 8.0) /* y > exp(-32) = 1.2664165549e-14 */
     x1 = z * polyval(z, _p1) / _p1evl(z, _q1);

@@ -108,29 +108,29 @@ double gamma(double x) {
 }
 
 List<double> _stirling(double x) {
-	if (x > 200) {
-		return <double>[double.INFINITY, 1.0];
-	}
+  if (x > 200) {
+    return <double>[double.INFINITY, 1.0];
+  }
 
-	const double sqrtTwoPi = 2.506628274631000502417;
-	const double maxStirling = 143.01608;
+  const double sqrtTwoPi = 2.506628274631000502417;
+  const double maxStirling = 143.01608;
 
-	double w = 1 / x;
-	w = 1 +
-			w *
-					((((_gamS[0] * w + _gamS[1]) * w + _gamS[2]) * w + _gamS[3]) * w +
-							_gamS[4]);
-	double y1 = math.exp(x);
-	double y2 = 1.0;
-	if (x > maxStirling) {
-		// avoid Pow() overflow
-		double v = math.pow(x, 0.5 * x - 0.25);
-		y1 = v;
-		y2 = v / y1;
-	} else {
-		y1 = math.pow(x, x - 0.5) / y1;
-	}
-	return <double>[y1, sqrtTwoPi * w * y2];
+  double w = 1 / x;
+  w = 1 +
+      w *
+          ((((_gamS[0] * w + _gamS[1]) * w + _gamS[2]) * w + _gamS[3]) * w +
+              _gamS[4]);
+  double y1 = math.exp(x);
+  double y2 = 1.0;
+  if (x > maxStirling) {
+    // avoid Pow() overflow
+    double v = math.pow(x, 0.5 * x - 0.25);
+    y1 = v;
+    y2 = v / y1;
+  } else {
+    y1 = math.pow(x, x - 0.5) / y1;
+  }
+  return <double>[y1, sqrtTwoPi * w * y2];
 }
 
 const List<double> _gamP = const <double>[

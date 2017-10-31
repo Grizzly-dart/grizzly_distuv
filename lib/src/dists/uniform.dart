@@ -27,50 +27,50 @@ class Uniform extends ContinuousRV {
 
   double skewness() => 0.0;
 
-  double kurtosis() => -6/5;
+  double kurtosis() => -6 / 5;
 
   double std() {
-	  final double diff = max - min;
-	  return math.sqrt(diff * diff / 12);
+    final double diff = max - min;
+    return math.sqrt(diff * diff / 12);
   }
 
   @override
   double relStd() {
-	  return (max - min) / (math.sqrt(3) * (max + min));
+    return (max - min) / (math.sqrt(3) * (max + min));
   }
 
   @override
   double pdf(double x) {
-	  if(x < min || x > max) {
-		  return 0.0;
-	  }
-	  return 1 / (max - min);
+    if (x < min || x > max) {
+      return 0.0;
+    }
+    return 1 / (max - min);
   }
 
   @override
   double cdf(double x) {
-	  if (x < min) {
-		  return 0.0;
-	  }
-	  if (x >= max) {
-		  return 1.0;
-	  }
-	  return (x - min) / (max - min);
+    if (x < min) {
+      return 0.0;
+    }
+    if (x >= max) {
+      return 1.0;
+    }
+    return (x - min) / (max - min);
   }
 
   double ppf(double q) {
-	  //TODO
-	  throw new UnimplementedError();
+    //TODO
+    throw new UnimplementedError();
   }
 
   @override
   double sample() {
-	  //TODO return min + (rand.Float64() * (max - min));
-	  throw new UnimplementedError();
+    //TODO return min + (rand.Float64() * (max - min));
+    throw new UnimplementedError();
   }
 
   double sampleMany(int count) {
-	  //TODO
-	  throw new UnimplementedError();
+    //TODO
+    throw new UnimplementedError();
   }
 }
