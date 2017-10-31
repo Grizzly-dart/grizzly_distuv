@@ -4,6 +4,6 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library grizzly_stats_dist;
+library grizzly_stats;
 
 export 'package:grizzly_stats/src/dists/dists.dart';

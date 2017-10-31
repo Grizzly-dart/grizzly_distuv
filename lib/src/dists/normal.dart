@@ -43,10 +43,7 @@ class Normal extends ContinuousRV {
 		return inner.abs() / 2;
 	}
 
-	double ppf(double q) {
-		//TODO
-		throw new UnimplementedError();
-	}
+	double ppf(double q) => math.normalInv(q);
 
 	double sample() {
 		//TODO
