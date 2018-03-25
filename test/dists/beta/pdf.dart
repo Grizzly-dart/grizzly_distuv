@@ -9,7 +9,7 @@ void main() {
 
     test('pdf', () {
       expect(beta.pdf(0.0), 0);
-      expect(beta.pdf(1.0), double.INFINITY);
+      expect(beta.pdf(1.0), double.infinity);
 
       final compares = <double>[
         0.0,

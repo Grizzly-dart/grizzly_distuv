@@ -95,10 +95,10 @@ double normalInv(double y0) {
   ];
 
   if (y0 <= 0.0) {
-    return double.NEGATIVE_INFINITY;
+    return double.negativeInfinity;
   }
   if (y0 >= 1.0) {
-    return double.INFINITY;
+    return double.infinity;
   }
 
   int code = 1;

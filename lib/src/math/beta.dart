@@ -86,7 +86,7 @@ double _contFracBeta(double a, double b, double x) {
       return az;
     }
   }
-  return double.NAN;
+  return double.nan;
 }
 
 /// Computes inverse of incomplete beta function

@@ -10,3 +10,4 @@ doc/api/
 
 .idea
 grizzly_stats.iml
+.dart_tool

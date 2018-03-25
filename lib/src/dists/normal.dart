@@ -34,7 +34,7 @@ class Normal extends ContinuousRV {
   double pdf(double x) {
     final double diff = x - mu;
     final double expo = -1 * diff * diff / (2 * variance());
-    final double denom = math.sqrt(2 * variance() * math.PI);
+    final double denom = math.sqrt(2 * variance() * math.pi);
     return math.exp(expo) / denom;
   }
 

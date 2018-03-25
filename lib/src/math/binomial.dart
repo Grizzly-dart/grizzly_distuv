@@ -4,7 +4,7 @@ part of grizzly.math;
 // See: https://en.wikipedia.org/wiki/Binomial_coefficient
 double binomialCoefficient(double n, double k) {
   if (k > n) {
-    return double.NAN;
+    return double.nan;
   }
   double r = 1.0;
   for (int d = 1; d <= k; d++) {
