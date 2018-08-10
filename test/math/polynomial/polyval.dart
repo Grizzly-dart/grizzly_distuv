@@ -1,5 +1,4 @@
 import 'package:test/test.dart';
-import 'package:grizzly_scales/grizzly_scales.dart';
 import 'package:grizzly_stats/math.dart';
 
 void main() {

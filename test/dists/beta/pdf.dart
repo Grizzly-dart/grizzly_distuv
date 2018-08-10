@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:grizzly_scales/grizzly_scales.dart';
+import 'package:grizzly_array/grizzly_array.dart';
 import 'package:grizzly_stats/grizzly_stats.dart';
 
 void main() {
@@ -9,7 +9,7 @@ void main() {
 
     test('pdf', () {
       expect(beta.pdf(0.0), 0);
-      expect(beta.pdf(1.0), double.INFINITY);
+      expect(beta.pdf(1.0), double.infinity);
 
       final compares = <double>[
         0.0,
@@ -25,7 +25,7 @@ void main() {
       ];
 
       int i = 0;
-      for (double x in Ranger.range(0.0, 0.9, 0.1)) {
+      for (double x in Ranger.between(0.0, 0.9, 0.1)) {
         expect(beta.pdf(x), compares[i]);
         i++;
       }
@@ -49,7 +49,7 @@ void main() {
       ];
 
       int i = 0;
-      for (double x in Ranger.range(0.0, 0.9, 0.1)) {
+      for (double x in Ranger.between(0.0, 0.9, 0.1)) {
         expect(beta.cdf(x), compares[i]);
         i++;
       }
@@ -68,7 +68,7 @@ void main() {
       ];
 
       i = 0;
-      for (double x in Ranger.range(0.9, 0.999, 0.01)) {
+      for (double x in Ranger.between(0.9, 0.999, 0.01)) {
         expect(beta.cdf(x), compares1[i]);
         i++;
       }
@@ -92,7 +92,7 @@ void main() {
       ];
 
       int i = 0;
-      for (double x in Ranger.range(0.0, 0.9, 0.1)) {
+      for (double x in Ranger.between(0.0, 0.9, 0.1)) {
         expect(beta.ppf(x), compares[i]);
         i++;
       }
@@ -111,7 +111,7 @@ void main() {
       ];
 
       i = 0;
-      for (double x in Ranger.range(0.9, 0.999, 0.01)) {
+      for (double x in Ranger.between(0.9, 0.999, 0.01)) {
         expect(beta.ppf(x), compares1[i]);
         i++;
       }

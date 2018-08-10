@@ -9,10 +9,17 @@ environment:
   sdk: '>=1.20.1 <2.0.0'
 
 dependencies:
-  grizzly_series:
-    path: ../grizzly_series
-  grizzly_scales:
-    path: ../grizzly_scales
+  grizzly_primitives: ^0.4.6
+  grizzly_array: ^0.4.5
+  grizzly_series: ^0.4.2
+  #grizzly_series:
+  #  path: ../grizzly_series
+  #grizzly_scales:
+  #  path: ../grizzly_scales
 
 dev_dependencies:
   test: ^0.12.0
+
+dependency_overrides:
+  grizzly_primitives:
+    path: ../grizzly_primitives

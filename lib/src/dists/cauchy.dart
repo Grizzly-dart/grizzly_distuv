@@ -19,28 +19,28 @@ class Cauchy extends ContinuousRV {
     return new Cauchy._(location, scale);
   }
 
-  double mean() => double.NAN;
+  double mean() => double.nan;
 
-  double variance() => double.NAN;
+  double variance() => double.nan;
 
-  double skewness() => double.NAN;
+  double skewness() => double.nan;
 
-  double kurtosis() => double.NAN;
+  double kurtosis() => double.nan;
 
-  double std() => double.NAN;
+  double std() => double.nan;
 
   @override
-  double relStd() => double.NAN;
+  double relStd() => double.nan;
 
   @override
   double pdf(double x) {
     final double diff = x - location;
     final double denom = (diff * diff) + (scale * scale);
-    return scale / denom / math.PI;
+    return scale / denom / math.pi;
   }
 
   @override
-  double cdf(double x) => (math.atan((x - location) / scale) / math.PI) + 0.5;
+  double cdf(double x) => (math.atan((x - location) / scale) / math.pi) + 0.5;
 
   double ppf(double q) {
     //TODO
