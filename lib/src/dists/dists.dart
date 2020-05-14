@@ -11,6 +11,7 @@ part 'exponential.dart';
 part 'gamma.dart';
 part 'geometric.dart';
 part 'normal.dart';
+part 'student_t.dart';
 part 'uniform.dart';
 
 class RandDistStats {
