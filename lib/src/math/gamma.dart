@@ -6,18 +6,18 @@ double gamma(double x) {
 
   // Special cases
   if (x.isNegative && Double.fractionPart(x) == 0) {
-    return double.NAN;
+    return double.nan;
   }
 
   if ((x.isInfinite && x.isNegative) || x.isNaN) {
-    return double.NAN;
+    return double.nan;
   }
 
-  if (x.isInfinite) return double.INFINITY;
+  if (x.isInfinite) return double.infinity;
 
   if (x == 0) {
-    if (x.isNegative) return double.NEGATIVE_INFINITY;
-    return double.INFINITY;
+    if (x.isNegative) return double.negativeInfinity;
+    return double.infinity;
   }
 
   double q = x.abs();
@@ -43,17 +43,17 @@ double gamma(double x) {
       p = p + 1;
       z = q - p;
     }
-    z = q * math.sin(math.PI * z);
+    z = q * math.sin(math.pi * z);
     if (z == 0) {
-      return signgam > 0 ? double.INFINITY : double.NEGATIVE_INFINITY;
+      return signgam > 0 ? double.infinity : double.negativeInfinity;
     }
     final List<double> sq = _stirling(q);
     final double absz = z.abs();
     final double d = absz * sq.first * sq.last;
     if (d.isInfinite) {
-      z = math.PI / absz / sq.first / sq.last;
+      z = math.pi / absz / sq.first / sq.last;
     } else {
-      z = math.PI / d;
+      z = math.pi / d;
     }
     return signgam * z;
   }
@@ -67,7 +67,7 @@ double gamma(double x) {
   while (x < 0) {
     if (x > -1e-09) {
       if (x == 0) {
-        return double.INFINITY;
+        return double.infinity;
       }
       return z / ((1 + _euler * x) * x);
     }
@@ -77,7 +77,7 @@ double gamma(double x) {
   while (x < 2) {
     if (x < 1e-09) {
       if (x == 0) {
-        return double.INFINITY;
+        return double.infinity;
       }
       return z / ((1 + _euler * x) * x);
     }
@@ -108,29 +108,29 @@ double gamma(double x) {
 }
 
 List<double> _stirling(double x) {
-	if (x > 200) {
-		return <double>[double.INFINITY, 1.0];
-	}
+  if (x > 200) {
+    return <double>[double.infinity, 1.0];
+  }
 
-	const double sqrtTwoPi = 2.506628274631000502417;
-	const double maxStirling = 143.01608;
+  const double sqrtTwoPi = 2.506628274631000502417;
+  const double maxStirling = 143.01608;
 
-	double w = 1 / x;
-	w = 1 +
-			w *
-					((((_gamS[0] * w + _gamS[1]) * w + _gamS[2]) * w + _gamS[3]) * w +
-							_gamS[4]);
-	double y1 = math.exp(x);
-	double y2 = 1.0;
-	if (x > maxStirling) {
-		// avoid Pow() overflow
-		double v = math.pow(x, 0.5 * x - 0.25);
-		y1 = v;
-		y2 = v / y1;
-	} else {
-		y1 = math.pow(x, x - 0.5) / y1;
-	}
-	return <double>[y1, sqrtTwoPi * w * y2];
+  double w = 1 / x;
+  w = 1 +
+      w *
+          ((((_gamS[0] * w + _gamS[1]) * w + _gamS[2]) * w + _gamS[3]) * w +
+              _gamS[4]);
+  double y1 = math.exp(x);
+  double y2 = 1.0;
+  if (x > maxStirling) {
+    // avoid Pow() overflow
+    double v = math.pow(x, 0.5 * x - 0.25);
+    y1 = v;
+    y2 = v / y1;
+  } else {
+    y1 = math.pow(x, x - 0.5) / y1;
+  }
+  return <double>[y1, sqrtTwoPi * w * y2];
 }
 
 const List<double> _gamP = const <double>[

@@ -72,120 +72,120 @@ const double _sb7 = -2.24409524465858183362e+01; // 0xC03670E242712D62
 ///	Erf(-Inf) = -1
 ///	Erf(NaN) = NaN
 double erf(double x) {
-	const double veryTiny = 2.848094538889218e-306; // 0x0080000000000000
-	const double small = 1.0 / (1 << 28); // 2**-28
+  const double veryTiny = 2.848094538889218e-306; // 0x0080000000000000
+  const double small = 1.0 / (1 << 28); // 2**-28
 
-	// special cases
-	if (x.isNaN) return x;
-	if (x.isInfinite) {
-		if (x.isNegative) return -1.0;
-		return 1.0;
-	}
+  // special cases
+  if (x.isNaN) return x;
+  if (x.isInfinite) {
+    if (x.isNegative) return -1.0;
+    return 1.0;
+  }
 
-	final bool sign = x < 0;
-	if (sign) {
-		x = -x;
-	}
+  final bool sign = x < 0;
+  if (sign) {
+    x = -x;
+  }
 
-	if (x < 0.84375) {
-		// |x| < 0.84375
-		double temp;
-		if (x < small) {
-			// |x| < 2**-28
-			if (x < veryTiny) {
-				temp = 0.125 * (8.0 * x + _efx8 * x); // avoid underflow
-			} else {
-				temp = x + _efx * x;
-			}
-		} else {
-			final double z = x * x;
-			final double r = _pp0 + z * (_pp1 + z * (_pp2 + z * (_pp3 + z * _pp4)));
-			final double s =
-					1 + z * (_qq1 + z * (_qq2 + z * (_qq3 + z * (_qq4 + z * _qq5))));
-			final double y = r / s;
-			temp = x + x * y;
-		}
-		if (sign) {
-			return -temp;
-		}
-		return temp;
-	}
+  if (x < 0.84375) {
+    // |x| < 0.84375
+    double temp;
+    if (x < small) {
+      // |x| < 2**-28
+      if (x < veryTiny) {
+        temp = 0.125 * (8.0 * x + _efx8 * x); // avoid underflow
+      } else {
+        temp = x + _efx * x;
+      }
+    } else {
+      final double z = x * x;
+      final double r = _pp0 + z * (_pp1 + z * (_pp2 + z * (_pp3 + z * _pp4)));
+      final double s =
+          1 + z * (_qq1 + z * (_qq2 + z * (_qq3 + z * (_qq4 + z * _qq5))));
+      final double y = r / s;
+      temp = x + x * y;
+    }
+    if (sign) {
+      return -temp;
+    }
+    return temp;
+  }
 
-	if (x < 1.25) {
-		// 0.84375 <= |x| < 1.25
-		final double s = x - 1;
-		final double p = _pa0 +
-				s *
-						(_pa1 +
-								s * (_pa2 + s * (_pa3 + s * (_pa4 + s * (_pa5 + s * _pa6)))));
-		final double q = 1 +
-				s *
-						(_qa1 +
-								s * (_qa2 + s * (_qa3 + s * (_qa4 + s * (_qa5 + s * _qa6)))));
-		if (sign) {
-			return -_erx - p / q;
-		}
-		return _erx + p / q;
-	}
+  if (x < 1.25) {
+    // 0.84375 <= |x| < 1.25
+    final double s = x - 1;
+    final double p = _pa0 +
+        s *
+            (_pa1 +
+                s * (_pa2 + s * (_pa3 + s * (_pa4 + s * (_pa5 + s * _pa6)))));
+    final double q = 1 +
+        s *
+            (_qa1 +
+                s * (_qa2 + s * (_qa3 + s * (_qa4 + s * (_qa5 + s * _qa6)))));
+    if (sign) {
+      return -_erx - p / q;
+    }
+    return _erx + p / q;
+  }
 
-	if (x >= 6) {
-		// inf > |x| >= 6
-		if (sign) {
-			return -1.0;
-		}
-		return 1.0;
-	}
+  if (x >= 6) {
+    // inf > |x| >= 6
+    if (sign) {
+      return -1.0;
+    }
+    return 1.0;
+  }
 
-	final double s = 1 / (x * x);
-	double r1;
-	double s1;
-	if (x < 1 / 0.35) {
-		// |x| < 1 / 0.35  ~ 2.857143
-		r1 = _ra7;
-		r1 += _ra6 + s * r1;
-		r1 += _ra5 + s * r1;
-		r1 += _ra4 + s * r1;
-		r1 += _ra3 + s * r1;
-		r1 += _ra2 + s * r1;
-		r1 += _ra1 + s * r1;
-		r1 += _ra0 + s * r1;
+  final double s = 1 / (x * x);
+  double r1;
+  double s1;
+  if (x < 1 / 0.35) {
+    // |x| < 1 / 0.35  ~ 2.857143
+    r1 = _ra7;
+    r1 += _ra6 + s * r1;
+    r1 += _ra5 + s * r1;
+    r1 += _ra4 + s * r1;
+    r1 += _ra3 + s * r1;
+    r1 += _ra2 + s * r1;
+    r1 += _ra1 + s * r1;
+    r1 += _ra0 + s * r1;
 
-		s1 = _sa8;
-		s1 += _sa7 + s * s1;
-		s1 += _sa6 + s * s1;
-		s1 += _sa5 + s * s1;
-		s1 += _sa4 + s * s1;
-		s1 += _sa3 + s * s1;
-		s1 += _sa2 + s * s1;
-		s1 += _sa1 + s * s1;
-		s1 += 1 + s * s1;
-	} else {
-		// |x| >= 1 / 0.35  ~ 2.857143
-		r1 = _rb6;
-		r1 += _rb5 + s * r1;
-		r1 += _rb4 + s * r1;
-		r1 += _rb3 + s * r1;
-		r1 += _rb2 + s * r1;
-		r1 += _rb1 + s * r1;
-		r1 += _rb0 + s * r1;
+    s1 = _sa8;
+    s1 += _sa7 + s * s1;
+    s1 += _sa6 + s * s1;
+    s1 += _sa5 + s * s1;
+    s1 += _sa4 + s * s1;
+    s1 += _sa3 + s * s1;
+    s1 += _sa2 + s * s1;
+    s1 += _sa1 + s * s1;
+    s1 += 1 + s * s1;
+  } else {
+    // |x| >= 1 / 0.35  ~ 2.857143
+    r1 = _rb6;
+    r1 += _rb5 + s * r1;
+    r1 += _rb4 + s * r1;
+    r1 += _rb3 + s * r1;
+    r1 += _rb2 + s * r1;
+    r1 += _rb1 + s * r1;
+    r1 += _rb0 + s * r1;
 
-		s1 = _sb7;
-		s1 += _sb6 + s * s1;
-		s1 += _sb5 + s * s1;
-		s1 += _sb4 + s * s1;
-		s1 += _sb3 + s * s1;
-		s1 += _sb2 + s * s1;
-		s1 += _sb1 + s * s1;
-		s1 += 1 + s * s1;
-	}
+    s1 = _sb7;
+    s1 += _sb6 + s * s1;
+    s1 += _sb5 + s * s1;
+    s1 += _sb4 + s * s1;
+    s1 += _sb3 + s * s1;
+    s1 += _sb2 + s * s1;
+    s1 += _sb1 + s * s1;
+    s1 += 1 + s * s1;
+  }
 
-	final double z = Double.toSingle(x); // pseudo-single (20-bit) precision x
-	final double r =
-			math.exp(-z * z - 0.5625) * math.exp((z - x) * (z + x) + r1 / s1);
-	if (sign) {
-		return r / x - 1;
-	}
-	return 1 - r / x;
+  final double z = Double.toSingle(x); // pseudo-single (20-bit) precision x
+  final double r =
+      math.exp(-z * z - 0.5625) * math.exp((z - x) * (z + x) + r1 / s1);
+  if (sign) {
+    return r / x - 1;
+  }
+  return 1 - r / x;
 }
 
 /// Returns the complementary error function of x
@@ -195,121 +195,121 @@ double erf(double x) {
 ///	Erfc(-Inf) = 2
 ///	Erfc(NaN) = NaN
 double erfc(double x) {
-	const double tiny = 1.0 / (1 << 56); // 2**-56
+  const double tiny = 1.0 / (1 << 56); // 2**-56
 
-	// special cases
-	if (x.isNaN) return x;
-	if (x.isInfinite) {
-		if (x.isNegative) return 2.0;
-		return 0.0;
-	}
+  // special cases
+  if (x.isNaN) return x;
+  if (x.isInfinite) {
+    if (x.isNegative) return 2.0;
+    return 0.0;
+  }
 
-	final bool sign = x < 0;
-	if (sign) {
-		x = -x;
-	}
+  final bool sign = x < 0;
+  if (sign) {
+    x = -x;
+  }
 
-	if (x < 0.84375) {
-		// |x| < 0.84375
-		double temp;
-		if (x < tiny) {
-			// |x| < 2**-56
-			temp = x;
-		} else {
-			final double z = x * x;
-			final double r = _pp0 + z * (_pp1 + z * (_pp2 + z * (_pp3 + z * _pp4)));
-			final double s =
-					1 + z * (_qq1 + z * (_qq2 + z * (_qq3 + z * (_qq4 + z * _qq5))));
-			final double y = r / s;
-			if (x < 0.25) {
-				// |x| < 1/4
-				temp = x + x * y;
-			} else {
-				temp = 0.5 + (x * y + (x - 0.5));
-			}
-		}
+  if (x < 0.84375) {
+    // |x| < 0.84375
+    double temp;
+    if (x < tiny) {
+      // |x| < 2**-56
+      temp = x;
+    } else {
+      final double z = x * x;
+      final double r = _pp0 + z * (_pp1 + z * (_pp2 + z * (_pp3 + z * _pp4)));
+      final double s =
+          1 + z * (_qq1 + z * (_qq2 + z * (_qq3 + z * (_qq4 + z * _qq5))));
+      final double y = r / s;
+      if (x < 0.25) {
+        // |x| < 1/4
+        temp = x + x * y;
+      } else {
+        temp = 0.5 + (x * y + (x - 0.5));
+      }
+    }
 
-		if (sign) {
-			return 1 + temp;
-		}
-		return 1 - temp;
-	}
+    if (sign) {
+      return 1 + temp;
+    }
+    return 1 - temp;
+  }
 
-	if (x < 1.25) {
-		// 0.84375 <= |x| < 1.25
-		final double s = x - 1;
-		final double p = _pa0 +
-				s *
-						(_pa1 +
-								s * (_pa2 + s * (_pa3 + s * (_pa4 + s * (_pa5 + s * _pa6)))));
-		final double q = 1 +
-				s *
-						(_qa1 +
-								s * (_qa2 + s * (_qa3 + s * (_qa4 + s * (_qa5 + s * _qa6)))));
-		if (sign) {
-			return 1 + _erx + p / q;
-		}
-		return 1 - _erx - p / q;
-	}
+  if (x < 1.25) {
+    // 0.84375 <= |x| < 1.25
+    final double s = x - 1;
+    final double p = _pa0 +
+        s *
+            (_pa1 +
+                s * (_pa2 + s * (_pa3 + s * (_pa4 + s * (_pa5 + s * _pa6)))));
+    final double q = 1 +
+        s *
+            (_qa1 +
+                s * (_qa2 + s * (_qa3 + s * (_qa4 + s * (_qa5 + s * _qa6)))));
+    if (sign) {
+      return 1 + _erx + p / q;
+    }
+    return 1 - _erx - p / q;
+  }
 
-	if (x < 28) {
-		// |x| < 28
-		final double s = 1 / (x * x);
-		double r1;
-		double s1;
-		if (x < 1 / 0.35) {
-			// |x| < 1 / 0.35 ~ 2.857143
-			r1 = _ra7;
-			r1 += _ra6 + s * r1;
-			r1 += _ra5 + s * r1;
-			r1 += _ra4 + s * r1;
-			r1 += _ra3 + s * r1;
-			r1 += _ra2 + s * r1;
-			r1 += _ra1 + s * r1;
-			r1 += _ra0 + s * r1;
+  if (x < 28) {
+    // |x| < 28
+    final double s = 1 / (x * x);
+    double r1;
+    double s1;
+    if (x < 1 / 0.35) {
+      // |x| < 1 / 0.35 ~ 2.857143
+      r1 = _ra7;
+      r1 += _ra6 + s * r1;
+      r1 += _ra5 + s * r1;
+      r1 += _ra4 + s * r1;
+      r1 += _ra3 + s * r1;
+      r1 += _ra2 + s * r1;
+      r1 += _ra1 + s * r1;
+      r1 += _ra0 + s * r1;
 
-			s1 = _sa8;
-			s1 += _sa7 + s * s1;
-			s1 += _sa6 + s * s1;
-			s1 += _sa5 + s * s1;
-			s1 += _sa4 + s * s1;
-			s1 += _sa3 + s * s1;
-			s1 += _sa2 + s * s1;
-			s1 += _sa1 + s * s1;
-			s1 += 1 + s * s1;
-		} else {
-			// |x| >= 1 / 0.35 ~ 2.857143
-			if (sign && x > 6) {
-				return 2.0; // x < -6
-			}
-			r1 = _rb6;
-			r1 += _rb5 + s * r1;
-			r1 += _rb4 + s * r1;
-			r1 += _rb3 + s * r1;
-			r1 += _rb2 + s * r1;
-			r1 += _rb1 + s * r1;
-			r1 += _rb0 + s * r1;
+      s1 = _sa8;
+      s1 += _sa7 + s * s1;
+      s1 += _sa6 + s * s1;
+      s1 += _sa5 + s * s1;
+      s1 += _sa4 + s * s1;
+      s1 += _sa3 + s * s1;
+      s1 += _sa2 + s * s1;
+      s1 += _sa1 + s * s1;
+      s1 += 1 + s * s1;
+    } else {
+      // |x| >= 1 / 0.35 ~ 2.857143
+      if (sign && x > 6) {
+        return 2.0; // x < -6
+      }
+      r1 = _rb6;
+      r1 += _rb5 + s * r1;
+      r1 += _rb4 + s * r1;
+      r1 += _rb3 + s * r1;
+      r1 += _rb2 + s * r1;
+      r1 += _rb1 + s * r1;
+      r1 += _rb0 + s * r1;
 
-			s1 = _sb7;
-			s1 += _sb6 + s * s1;
-			s1 += _sb5 + s * s1;
-			s1 += _sb4 + s * s1;
-			s1 += _sb3 + s * s1;
-			s1 += _sb2 + s * s1;
-			s1 += _sb1 + s * s1;
-			s1 += 1 + s * s1;
-		}
+      s1 = _sb7;
+      s1 += _sb6 + s * s1;
+      s1 += _sb5 + s * s1;
+      s1 += _sb4 + s * s1;
+      s1 += _sb3 + s * s1;
+      s1 += _sb2 + s * s1;
+      s1 += _sb1 + s * s1;
+      s1 += 1 + s * s1;
+    }
 
-		final double z = Double.toSingle(x); // pseudo-single (20-bit) precision x
-		final double r =
-				math.exp(-z * z - 0.5625) * math.exp((z - x) * (z + x) + r1 / s1);
-		if (sign) {
-			return 2 - r / x;
-		}
-		return r / x;
-	}
-	if (sign) {
-		return 2.0;
-	}
-	return 0.0;
+    final double z = Double.toSingle(x); // pseudo-single (20-bit) precision x
+    final double r =
+        math.exp(-z * z - 0.5625) * math.exp((z - x) * (z + x) + r1 / s1);
+    if (sign) {
+      return 2 - r / x;
+    }
+    return r / x;
+  }
+  if (sign) {
+    return 2.0;
+  }
+  return 0.0;
 }

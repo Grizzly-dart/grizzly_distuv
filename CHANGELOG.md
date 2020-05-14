@@ -2,4 +2,6 @@
 
 ## 0.0.1
 
-- Initial version, created by Stagehand
+- Distributions incomplete
+- Uniform, standard normal, normal, exponential and standard exponential
+samplers

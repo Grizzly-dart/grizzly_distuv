@@ -28,7 +28,7 @@ Lgamma lgamma(double x) {
     return new Lgamma(x, sign);
   }
   if (x == 0.0) {
-    return new Lgamma(double.INFINITY, sign);
+    return new Lgamma(double.infinity, sign);
   }
 
   bool neg = false;
@@ -49,13 +49,13 @@ Lgamma lgamma(double x) {
   if (neg) {
     if (x >= Two52) {
       // |x| >= 2**52, must be -integer
-      return new Lgamma(double.INFINITY, sign);
+      return new Lgamma(double.infinity, sign);
     }
     final double t = sinPi(x);
     if (t == 0) {
-      return new Lgamma(double.INFINITY, sign);
+      return new Lgamma(double.infinity, sign);
     }
-    nadj = math.log(math.PI / (t * x).abs());
+    nadj = math.log(math.pi / (t * x).abs());
     if (t < 0) {
       sign = -1;
     }
@@ -248,7 +248,7 @@ double sinPi(double x) {
   final double Two53 = 9.0072e+15; // 0x4340000000000000 ~9.0072e+15
 
   if (x < 0.25) {
-    return -math.sin(math.PI * x);
+    return -math.sin(math.pi * x);
   }
 
 // argument reduction
@@ -274,22 +274,22 @@ double sinPi(double x) {
   }
   switch (n) {
     case 0:
-      x = math.sin(math.PI * x);
+      x = math.sin(math.pi * x);
       break;
     case 1:
     case 2:
-      x = math.cos(math.PI * (0.5 - x));
+      x = math.cos(math.pi * (0.5 - x));
       break;
     case 3:
     case 4:
-      x = math.sin(math.PI * (1 - x));
+      x = math.sin(math.pi * (1 - x));
       break;
     case 5:
     case 6:
-      x = -math.cos(math.PI * (x - 1.5));
+      x = -math.cos(math.pi * (x - 1.5));
       break;
     default:
-      x = math.sin(math.PI * (x - 2));
+      x = math.sin(math.pi * (x - 2));
       break;
   }
   return -x;
