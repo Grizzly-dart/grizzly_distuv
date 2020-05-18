@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:grizzly_stats/math.dart';
+import 'package:grizzly_distuv/math.dart';
 
 void main() {
   group('Polyval', () {

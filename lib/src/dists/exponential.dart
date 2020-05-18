@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Exponential Distribution is a continuous probability distribution
 /// with parameters λ > 0.
@@ -11,10 +11,10 @@ class Exponential extends ContinuousRV {
 
   factory Exponential(double lambda) {
     if (lambda <= 0) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           lambda, 'lambda', 'Must be greater than zero');
     }
-    return new Exponential._(lambda);
+    return Exponential._(lambda);
   }
 
   double mean() => lambda;
@@ -48,17 +48,17 @@ class Exponential extends ContinuousRV {
 
   double ppf(double q) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   @override
   double sample() {
     //TODO return min + (rand.Float64() * (max - min));
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

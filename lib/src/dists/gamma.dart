@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Gamma Distribution is a continuous probability distribution
 /// with parameters α > 0, β > 0.
@@ -13,13 +13,13 @@ class Gamma extends ContinuousRV {
 
   factory Gamma(double shape, double rate) {
     if (shape <= 0) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           shape, 'shape', 'Must be greater than zero');
     }
     if (rate <= 0) {
-      throw new ArgumentError.value(rate, 'rate', 'Must be greater than zero');
+      throw ArgumentError.value(rate, 'rate', 'Must be greater than zero');
     }
-    return new Gamma._(shape, rate);
+    return Gamma._(shape, rate);
   }
 
   double mean() => shape / rate;
@@ -64,17 +64,17 @@ class Gamma extends ContinuousRV {
 
   double ppf(double q) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   @override
   double sample() {
     //TODO return min + (rand.Float64() * (max - min));
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

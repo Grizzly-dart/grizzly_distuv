@@ -1,20 +1,20 @@
 import 'dart:math';
 
 abstract class RandSampler {
-  static UniformSampler uniform = new UniformSampler(uniform: _state);
+  static UniformSampler uniform = UniformSampler(uniform: _state);
 
   static StandardNormalSampler standardNormal =
-      new StandardNormalSampler(uniform: _state);
+      StandardNormalSampler(uniform: _state);
 
-  static NormalSampler normal = new NormalSampler(uniform: _state);
+  static NormalSampler normal = NormalSampler(uniform: _state);
 
   static StandardExponentialSampler standardExponential =
-      new StandardExponentialSampler(uniform: _state);
+      StandardExponentialSampler(uniform: _state);
 
   static ExponentialSampler exponential =
-      new ExponentialSampler(uniform: _state);
+      ExponentialSampler(uniform: _state);
 
-  static Random _state = new Random.secure();
+  static Random _state = Random.secure();
 }
 
 double get rand => RandSampler.uniform.sample;
@@ -82,7 +82,7 @@ class NormalSampler implements RandSampler {
 
   NormalSampler({Random uniform})
       : _internal = uniform != null
-            ? new StandardNormalSampler(uniform: uniform)
+            ? StandardNormalSampler(uniform: uniform)
             : RandSampler.standardNormal;
 
   double sample({num loc: 0, num scale: 1}) => loc + scale * _internal.sample;

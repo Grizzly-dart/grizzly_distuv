@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Cauchy  Distribution is a continuous probability distribution
 /// with parameters x, γ >= 0.
@@ -13,10 +13,10 @@ class Cauchy extends ContinuousRV {
 
   factory Cauchy(double location, double scale) {
     if (location <= 0) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           location, 'location', 'Must be greater than 0');
     }
-    return new Cauchy._(location, scale);
+    return Cauchy._(location, scale);
   }
 
   double mean() => double.nan;
@@ -44,17 +44,17 @@ class Cauchy extends ContinuousRV {
 
   double ppf(double q) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   @override
   double sample() {
     //TODO return min + (rand.Float64() * (max - min));
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

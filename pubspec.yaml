@@ -1,19 +1,22 @@
-name: grizzly_stats
+name: grizzly_distuv
 description: Statistics and probability library for Dart
 version: 0.2.0-dev
 homepage: https://github.com/Grizzly-dart/grizzly_stats
 author: Ravi Teja Gudapati <tejainece@gmail.com>
-documentation:
 
 environment:
   sdk: '>=2.1.0 <3.0.0'
 
+dependencies:
+  grizzly_range: ^2.0.6
+
 dev_dependencies:
-  test: ^0.12.0
-  grizzly_scales:
-  grizzly_primitives: ^0.4.6
-  grizzly_array: ^0.4.5
-  grizzly_series: ^0.4.2
+  test:
+  # grizzly_scales:
+  # grizzly_primitives:
+  grizzly_array:
+    path: ../grizzly_array
+  # grizzly_series:
   #grizzly_series:
   #  path: ../grizzly_series
   #grizzly_scales:

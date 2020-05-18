@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Uniform Distribution is a continuous probability distribution
 /// with parameters Min and Max, with Max < Min.
@@ -13,9 +13,9 @@ class Uniform extends ContinuousRV {
 
   factory Uniform(double min, double max) {
     if (max <= min) {
-      throw new ArgumentError.value(max, 'max', 'Must be greater than min');
+      throw ArgumentError.value(max, 'max', 'Must be greater than min');
     }
-    return new Uniform._(min, max);
+    return Uniform._(min, max);
   }
 
   double mean() => (min + max) / 2;
@@ -60,17 +60,17 @@ class Uniform extends ContinuousRV {
 
   double ppf(double q) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   @override
   double sample() {
     //TODO return min + (rand.Float64() * (max - min));
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

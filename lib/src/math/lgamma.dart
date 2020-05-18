@@ -22,13 +22,13 @@ Lgamma lgamma(double x) {
   // special cases
   int sign = 1;
   if (x.isNaN) {
-    return new Lgamma(x, sign);
+    return Lgamma(x, sign);
   }
   if (x.isInfinite) {
-    return new Lgamma(x, sign);
+    return Lgamma(x, sign);
   }
   if (x == 0.0) {
-    return new Lgamma(double.infinity, sign);
+    return Lgamma(double.infinity, sign);
   }
 
   bool neg = false;
@@ -42,18 +42,18 @@ Lgamma lgamma(double x) {
     if (neg) {
       sign = -1;
     }
-    return new Lgamma(-math.log(x), sign);
+    return Lgamma(-math.log(x), sign);
   }
 
   double nadj;
   if (neg) {
     if (x >= Two52) {
       // |x| >= 2**52, must be -integer
-      return new Lgamma(double.infinity, sign);
+      return Lgamma(double.infinity, sign);
     }
     final double t = sinPi(x);
     if (t == 0) {
-      return new Lgamma(double.infinity, sign);
+      return Lgamma(double.infinity, sign);
     }
     nadj = math.log(math.pi / (t * x).abs());
     if (t < 0) {
@@ -63,7 +63,7 @@ Lgamma lgamma(double x) {
 
   // purge off 1 and 2
   if (x == 1.0 || x == 2.0) {
-    return new Lgamma(0.0, sign);
+    return Lgamma(0.0, sign);
   }
 
   double lgamma;
@@ -239,7 +239,7 @@ Lgamma lgamma(double x) {
   if (neg) {
     lgamma = nadj - lgamma;
   }
-  return new Lgamma(lgamma, sign);
+  return Lgamma(lgamma, sign);
 }
 
 // sinPi(x) is a helper function for negative x

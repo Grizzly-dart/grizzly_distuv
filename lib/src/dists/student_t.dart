@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// TODO
 class StudentT extends ContinuousRV {
@@ -31,7 +31,7 @@ class StudentT extends ContinuousRV {
         _pdfExp = -(df + 1) / 2,
         _halfDf = df / 2 {
     if (df <= 0)
-      throw new ArgumentError.value(df, "df", "Should be greater than 0");
+      throw ArgumentError.value(df, "df", "Should be greater than 0");
   }
 
   double mean() => _mean;
@@ -51,7 +51,7 @@ class StudentT extends ContinuousRV {
   @override
   double relStd() {
     // TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   @override
@@ -72,11 +72,11 @@ class StudentT extends ContinuousRV {
   @override
   double sample() {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

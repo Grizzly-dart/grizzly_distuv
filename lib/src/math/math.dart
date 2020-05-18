@@ -17,7 +17,7 @@ class Double {
   ///
   /// Converts mantisa from 53-bits to 20-bits
   static double toSingle(double inp) {
-    final lst = new Float64List.fromList([inp]).buffer.asUint32List();
+    final lst = Float64List.fromList([inp]).buffer.asUint32List();
     if (Endian.host == Endian.little) {
       lst[0] = 0;
     } else {
@@ -30,7 +30,7 @@ class Double {
   ///
   /// Converts mantisa from 53-bits to 20-bits
   static int exponent(double inp) {
-    final lst = new Float64List.fromList([inp]).buffer.asUint16List();
+    final lst = Float64List.fromList([inp]).buffer.asUint16List();
     int ret = 0;
     if (Endian.host == Endian.little) {
       ret = lst[3] >> 4;
@@ -41,7 +41,7 @@ class Double {
   }
 
   static double mask(double inp, int hw1, int hw0) {
-    final lst = new Float64List.fromList([inp]).buffer.asUint32List();
+    final lst = Float64List.fromList([inp]).buffer.asUint32List();
     if (Endian.host == Endian.little) {
       lst[0] &= hw0;
       lst[1] &= hw1;
@@ -53,7 +53,7 @@ class Double {
   }
 
   static int bit0(double inp) {
-    final lst = new Float64List.fromList([inp]).buffer.asUint32List();
+    final lst = Float64List.fromList([inp]).buffer.asUint32List();
     if (Endian.host == Endian.little) {
       return lst[0] & 1;
     } else {

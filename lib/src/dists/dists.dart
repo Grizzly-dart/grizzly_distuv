@@ -1,7 +1,7 @@
-library grizzly.stats.dist;
+library grizzly.distuv.dist;
 
 import 'dart:math' as math;
-import 'package:grizzly_stats/src/math/math.dart' as math;
+import 'package:grizzly_distuv/math.dart' as math;
 
 part 'beta.dart';
 part 'binomial.dart';
@@ -44,7 +44,7 @@ abstract class ContinuousRV {
   double relStd();
 
   RandDistStats stats() =>
-      new RandDistStats(mean(), variance(), skewness(), kurtosis(), std());
+      RandDistStats(mean(), variance(), skewness(), kurtosis(), std());
 
   double pdf(double x);
 

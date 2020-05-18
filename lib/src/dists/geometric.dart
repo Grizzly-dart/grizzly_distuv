@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Geometric Distribution is a discrete probability distribution
 /// with parameters p > 0 >= 1. Note: this is models the number of failures
@@ -12,9 +12,9 @@ class Geometric extends ContinuousRV {
 
   factory Geometric(double prob) {
     if (prob <= 0 || prob > 1) {
-      throw new ArgumentError.value(prob, 'prob', 'Must be in range (0, 1]');
+      throw ArgumentError.value(prob, 'prob', 'Must be in range (0, 1]');
     }
-    return new Geometric._(prob);
+    return Geometric._(prob);
   }
 
   double mean() => (1 - prob) / prob;
@@ -48,17 +48,17 @@ class Geometric extends ContinuousRV {
 
   double ppf(double q) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   @override
   double sample() {
     //TODO return min + (rand.Float64() * (max - min));
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

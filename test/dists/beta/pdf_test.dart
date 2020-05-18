@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:grizzly_array/grizzly_array.dart';
-import 'package:grizzly_stats/grizzly_stats.dart';
+import 'package:grizzly_range/grizzly_range.dart';
+import 'package:grizzly_distuv/grizzly_distuv.dart';
 
 void main() {
   group('Beta', () {
-    final beta = new Beta(2.31, 0.627);
+    final beta = Beta(2.31, 0.627);
     setUp(() {});
 
     test('pdf', () {
@@ -25,7 +25,7 @@ void main() {
       ];
 
       int i = 0;
-      for (double x in Ranger.between(0.0, 0.9, 0.1)) {
+      for (double x in range(0.0, 0.9, 0.1)) {
         expect(beta.pdf(x), compares[i]);
         i++;
       }
@@ -49,7 +49,7 @@ void main() {
       ];
 
       int i = 0;
-      for (double x in Ranger.between(0.0, 0.9, 0.1)) {
+      for (double x in range(0.0, 0.9, 0.1)) {
         expect(beta.cdf(x), compares[i]);
         i++;
       }
@@ -68,7 +68,7 @@ void main() {
       ];
 
       i = 0;
-      for (double x in Ranger.between(0.9, 0.999, 0.01)) {
+      for (double x in range(0.9, 0.999, 0.01)) {
         expect(beta.cdf(x), compares1[i]);
         i++;
       }
@@ -92,7 +92,7 @@ void main() {
       ];
 
       int i = 0;
-      for (double x in Ranger.between(0.0, 0.9, 0.1)) {
+      for (double x in range(0.0, 0.9, 0.1)) {
         expect(beta.ppf(x), compares[i]);
         i++;
       }
@@ -111,7 +111,7 @@ void main() {
       ];
 
       i = 0;
-      for (double x in Ranger.between(0.9, 0.999, 0.01)) {
+      for (double x in range(0.9, 0.999, 0.01)) {
         expect(beta.ppf(x), compares1[i]);
         i++;
       }

@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Beta  Distribution is a continuous probability distribution
 /// with parameters α > 0, β >= 0.
@@ -22,15 +22,15 @@ class Beta extends ContinuousRV {
 
   factory Beta(double alpha, double beta) {
     if (alpha <= 0) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           alpha, 'alpha', "Alpha must be greater than zero.");
     }
     if (beta <= 0) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           beta, 'beta', "Beta must be greater than zero.");
     }
 
-    return new Beta._(alpha, beta);
+    return Beta._(alpha, beta);
   }
 
   double mean() => alpha / _apb;
@@ -57,7 +57,7 @@ class Beta extends ContinuousRV {
   double relStd() => std() / mean();
 
   RandDistStats stats() =>
-      new RandDistStats(mean(), variance(), skewness(), kurtosis(), std());
+      RandDistStats(mean(), variance(), skewness(), kurtosis(), std());
 
   double pdf(double x) {
     final b = math.beta(alpha, beta);
@@ -72,12 +72,12 @@ class Beta extends ContinuousRV {
 
   double sample() {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }
 

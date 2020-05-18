@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Binomial Distribution is a discrete probability distribution
 /// with parameters n > 0, 1 > p > 0.
@@ -13,14 +13,14 @@ class Binomial extends ContinuousRV {
 
   factory Binomial(double trials, double prob) {
     if (trials < 0) {
-      throw new ArgumentError.value(trials, 'trials', 'Must be positive');
+      throw ArgumentError.value(trials, 'trials', 'Must be positive');
     }
 
     if (prob < 0 || prob > 1) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           trials, 'trials', 'Must be in range [0, 1]');
     }
-    return new Binomial._(trials, prob);
+    return Binomial._(trials, prob);
   }
 
   double mean() => trials * prob;
@@ -82,17 +82,17 @@ class Binomial extends ContinuousRV {
 
   double ppf(double q) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   @override
   double sample() {
     //TODO return min + (rand.Float64() * (max - min));
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

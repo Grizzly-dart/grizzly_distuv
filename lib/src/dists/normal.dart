@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The Normal(or Gaussian) Distribution is a continuous probability distribution
 /// with parameters μ, σ >= 0.
@@ -13,10 +13,10 @@ class Normal extends ContinuousRV {
 
   factory Normal(double mu, double sigma) {
     if (sigma < 0) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           sigma, 'sigma', 'Must be greater than zero');
     }
-    return new Normal._(mu, sigma);
+    return Normal._(mu, sigma);
   }
 
   double mean() => mu;
@@ -47,11 +47,11 @@ class Normal extends ContinuousRV {
 
   double sample() {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

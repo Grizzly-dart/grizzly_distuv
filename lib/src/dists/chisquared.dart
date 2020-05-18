@@ -1,4 +1,4 @@
-part of grizzly.stats.dist;
+part of grizzly.distuv.dist;
 
 /// The ChiSquared Distribution is a continuous probability distribution
 /// with parameters df > 0.
@@ -11,10 +11,10 @@ class ChiSquared extends ContinuousRV {
 
   factory ChiSquared(double degrees) {
     if (degrees <= 0) {
-      throw new ArgumentError.value(
+      throw ArgumentError.value(
           degrees, 'degrees', 'Must be greater than zero');
     }
-    return new ChiSquared._(degrees);
+    return ChiSquared._(degrees);
   }
 
   double mean() => degrees;
@@ -52,16 +52,16 @@ class ChiSquared extends ContinuousRV {
 
   double ppf(double q) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sample() {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 
   double sampleMany(int count) {
     //TODO
-    throw new UnimplementedError();
+    throw UnimplementedError();
   }
 }

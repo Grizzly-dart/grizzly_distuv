@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
 import 'package:grizzly_array/grizzly_array.dart';
-import 'package:grizzly_stats/grizzly_stats.dart';
+import 'package:grizzly_distuv/grizzly_distuv.dart';
 
 main() {
   group("Student-t", () {
-    final t2 = new StudentT(2.0);
+    final t2 = StudentT(2.0);
 
     test("ppf", () {
       print(t2.ppf(0.01));
