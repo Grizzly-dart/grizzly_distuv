@@ -11,8 +11,7 @@ class Exponential extends ContinuousRV {
 
   factory Exponential(double lambda) {
     if (lambda <= 0) {
-      throw ArgumentError.value(
-          lambda, 'lambda', 'Must be greater than zero');
+      throw ArgumentError.value(lambda, 'lambda', 'Must be greater than zero');
     }
     return Exponential._(lambda);
   }

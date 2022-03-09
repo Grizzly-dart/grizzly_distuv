@@ -17,8 +17,7 @@ class Binomial extends ContinuousRV {
     }
 
     if (prob < 0 || prob > 1) {
-      throw ArgumentError.value(
-          trials, 'trials', 'Must be in range [0, 1]');
+      throw ArgumentError.value(trials, 'trials', 'Must be in range [0, 1]');
     }
     return Binomial._(trials, prob);
   }
@@ -55,7 +54,8 @@ class Binomial extends ContinuousRV {
       return 0.0;
     }
     final double cnk = math.binomialCoefficient(trials, x);
-    final double pows = math.pow(prob, x) * math.pow(1 - prob, trials - x);
+    final double pows =
+        (math.pow(prob, x) * math.pow(1 - prob, trials - x)).toDouble();
     if (cnk.isInfinite) {
       return 0.0;
     }
@@ -74,7 +74,8 @@ class Binomial extends ContinuousRV {
     double end = x.floorToDouble() + 1;
     for (double i = 0.0; i < end; i++) {
       final double current = math.binomialCoefficient(trials, i);
-      final double pows = math.pow(prob, i) * math.pow(1 - prob, trials - i);
+      final double pows =
+          (math.pow(prob, i) * math.pow(1 - prob, trials - i)).toDouble();
       result += current * pows;
     }
     return result;

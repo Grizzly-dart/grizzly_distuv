@@ -11,8 +11,7 @@ abstract class RandSampler {
   static StandardExponentialSampler standardExponential =
       StandardExponentialSampler(uniform: _state);
 
-  static ExponentialSampler exponential =
-      ExponentialSampler(uniform: _state);
+  static ExponentialSampler exponential = ExponentialSampler(uniform: _state);
 
   static Random _state = Random.secure();
 }
@@ -33,7 +32,7 @@ class UniformSampler implements RandSampler {
   /// Uniform distribution used internally to generate normal samples
   final Random _uniform;
 
-  UniformSampler({Random uniform}) : _uniform = uniform ?? RandSampler._state;
+  UniformSampler({Random? uniform}) : _uniform = uniform ?? RandSampler._state;
 
   int get sampleInt => _uniform.nextInt(1 << 32);
 
@@ -49,7 +48,7 @@ class StandardNormalSampler implements RandSampler {
 
   double _gauss = 0.0;
 
-  StandardNormalSampler({Random uniform})
+  StandardNormalSampler({Random? uniform})
       : _uniform = uniform ?? RandSampler._state;
 
   double get sample {
@@ -80,7 +79,7 @@ class StandardNormalSampler implements RandSampler {
 class NormalSampler implements RandSampler {
   final StandardNormalSampler _internal;
 
-  NormalSampler({Random uniform})
+  NormalSampler({Random? uniform})
       : _internal = uniform != null
             ? StandardNormalSampler(uniform: uniform)
             : RandSampler.standardNormal;
@@ -92,7 +91,7 @@ class StandardExponentialSampler implements RandSampler {
   /// Uniform distribution used internally to generate exponential samples
   final Random _uniform;
 
-  StandardExponentialSampler({Random uniform})
+  StandardExponentialSampler({Random? uniform})
       : _uniform = uniform ?? RandSampler._state;
 
   double get sample => -log(1.0 - _uniform.nextDouble());
@@ -102,7 +101,7 @@ class ExponentialSampler implements RandSampler {
   /// Uniform distribution used internally to generate exponential samples
   final Random _uniform;
 
-  ExponentialSampler({Random uniform})
+  ExponentialSampler({Random? uniform})
       : _uniform = uniform ?? RandSampler._state;
 
   double sample({num scale: 1.0}) => scale * -log(1.0 - _uniform.nextDouble());

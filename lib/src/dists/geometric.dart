@@ -43,7 +43,7 @@ class Geometric extends ContinuousRV {
     if (x < 0.0) {
       return 0.0;
     }
-    return 1 - math.pow(1 - prob, x.floor() + 1);
+    return 1.0 - math.pow(1 - prob, x.floor() + 1);
   }
 
   double ppf(double q) {

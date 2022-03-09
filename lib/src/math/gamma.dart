@@ -124,7 +124,7 @@ List<double> _stirling(double x) {
   double y2 = 1.0;
   if (x > maxStirling) {
     // avoid Pow() overflow
-    double v = math.pow(x, 0.5 * x - 0.25);
+    double v = math.pow(x, 0.5 * x - 0.25).toDouble();
     y1 = v;
     y2 = v / y1;
   } else {

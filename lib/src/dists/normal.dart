@@ -13,8 +13,7 @@ class Normal extends ContinuousRV {
 
   factory Normal(double mu, double sigma) {
     if (sigma < 0) {
-      throw ArgumentError.value(
-          sigma, 'sigma', 'Must be greater than zero');
+      throw ArgumentError.value(sigma, 'sigma', 'Must be greater than zero');
     }
     return Normal._(mu, sigma);
   }

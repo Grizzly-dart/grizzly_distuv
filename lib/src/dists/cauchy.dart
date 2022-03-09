@@ -13,8 +13,7 @@ class Cauchy extends ContinuousRV {
 
   factory Cauchy(double location, double scale) {
     if (location <= 0) {
-      throw ArgumentError.value(
-          location, 'location', 'Must be greater than 0');
+      throw ArgumentError.value(location, 'location', 'Must be greater than 0');
     }
     return Cauchy._(location, scale);
   }

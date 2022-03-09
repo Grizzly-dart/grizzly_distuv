@@ -45,7 +45,7 @@ Lgamma lgamma(double x) {
     return Lgamma(-math.log(x), sign);
   }
 
-  double nadj;
+  double nadj = 0;
   if (neg) {
     if (x >= Two52) {
       // |x| >= 2**52, must be -integer

@@ -13,8 +13,7 @@ class Gamma extends ContinuousRV {
 
   factory Gamma(double shape, double rate) {
     if (shape <= 0) {
-      throw ArgumentError.value(
-          shape, 'shape', 'Must be greater than zero');
+      throw ArgumentError.value(shape, 'shape', 'Must be greater than zero');
     }
     if (rate <= 0) {
       throw ArgumentError.value(rate, 'rate', 'Must be greater than zero');

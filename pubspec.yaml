@@ -5,12 +5,12 @@ homepage: https://github.com/Grizzly-dart/grizzly_stats
 author: Ravi Teja Gudapati <tejainece@gmail.com>
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.15.0 <3.0.0'
 
 # dependencies:
 
 dev_dependencies:
   test:
-  grizzly_array:
-    path: ../grizzly_array
-  grizzly_range: ^2.0.6
+  #grizzly_array:
+  #  path: ../grizzly_array
+  grizzly_range: ^3.0.0

@@ -125,7 +125,7 @@ double ibetaInv(double a, double b, double p) {
     double u = math.exp(b * lnb) / b;
     double w = t + u;
     if (p < t / w)
-      x = math.pow(a * w * p, 1.0 / a);
+      x = math.pow(a * w * p, 1.0 / a).toDouble();
     else
       x = 1.0 - math.pow(b * w * (1.0 - p), 1.0 / b);
   }
